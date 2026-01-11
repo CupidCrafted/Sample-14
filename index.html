@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Story ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #fdf6ff; /* Soft Lilac-White */
+            font-family: 'Georgia', serif;
+            color: #4a1a4a;
+            overflow-x: hidden;
+        }
+
+        header {
+            height: 40vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(224, 176, 255, 0.5), rgba(255, 255, 255, 1));
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 { font-size: 2.2rem; color: #8A2BE2; margin: 0; }
+        .subtitle { font-style: italic; color: #D4AF37; margin-top: 10px; font-size: 1.1rem; }
+
+        /* THE CENTER LINE */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px 0;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-color: #D4AF37;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1.5px;
+        }
+
+        /* BOX CONTAINERS */
+        .container {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
+        }
+
+        /* Show animation class */
+        .container.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .left { left: 0; text-align: right; }
+        .right { left: 50%; text-align: left; }
+
+        /* THE HEART DOTS */
+        .container::after {
+            content: '❤️';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -13px;
+            background-color: #fdf6ff;
+            top: 15px;
+            z-index: 1;
+            font-size: 14px;
+        }
+
+        .right::after { left: -11px; }
+
+        .content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border: 1px solid #eee;
+        }
+
+        .content img {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 10px;
+            display: block;
+        }
+
+        .date {
+            font-weight: bold;
+            color: #8A2BE2;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            background: white;
+        }
+
+        .shimmer-gold {
+            font-weight: bold;
+            font-size: 1.4rem;
+            background: linear-gradient(to right, #B8860B, #D4AF37, #B8860B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* MOBILE ADJUSTMENTS */
+        @media screen and (max-width: 600px) {
+            .timeline::after { left: 31px; }
+            .container { width: 100%; padding-left: 70px; padding-right: 25px; text-align: left; }
+            .container::after { left: 19px; }
+            .right { left: 0%; }
+            .left { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Our Love Story</h1>
+        <p class="subtitle">Every step of the way...</p>
+    </header>
+
+    <div class="timeline">
+        <div class="container left">
+            <div class="content">
+                <span class="date">The Beginning</span>
+                <h3>The Day We Met ✨</h3>
+                <p>I didn't know it then, but my life was about to change forever.</p>
+                <img src="https://picsum.photos/id/82/400/300" alt="Met">
+            </div>
+        </div>
+
+        <div class="container right">
+            <div class="content">
+                <span class="date">First Date</span>
+                <h3>Laughter & Pizza 🍕</h3>
+                <p>The night I realized you were someone truly special.</p>
+                <img src="https://picsum.photos/id/431/400/300" alt="Date">
+            </div>
+        </div>
+
+        <div class="container left">
+            <div class="content">
+                <span class="date">Memories</span>
+                <h3>Our First Adventure 🏖️</h3>
+                <p>Exploring the world is better when I'm holding your hand.</p>
+                <img src="https://picsum.photos/id/353/400/300" alt="Trip">
+            </div>
+        </div>
+
+        <div class="container right">
+            <div class="content">
+                <span class="date">Present Day</span>
+                <h3>Happy Valentine's Day 💝</h3>
+                <p>I can't wait to see what our next chapter looks like.</p>
+                <img src="https://picsum.photos/id/667/400/300" alt="Today">
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="shimmer-gold">I LOVE YOU FOREVER</div>
+        <p style="color: #888; font-style: italic;">...and beyond.</p>
+    </footer>
+
+    <script>
+        // JS to trigger the fade-in effect as you scroll
+        const observerOptions = {
+            threshold: 0.2
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.container').forEach(box => {
+            observer.observe(box);
+        });
+    </script>
+
+</body>
+</html>
